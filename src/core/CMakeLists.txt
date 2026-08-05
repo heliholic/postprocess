@@ -3,4 +3,5 @@
 #
 # Holds no sources of its own. Every component gets a subdirectory.
 
+add_subdirectory(common)
 add_subdirectory(platform)
