@@ -14,6 +14,39 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
+    },
+    {
+      "name": "arm",
+      "hidden": true,
+      "inherits": "base",
+      "toolchainFile": "${sourceDir}/cmake/toolchain/arm-none-eabi.cmake",
+      "cacheVariables": {}
+    },
+    {
+      "name": "arm-debug",
+      "hidden": true,
+      "inherits": "arm",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "RFX_LTO": "OFF"
+      },
+      "description": "Unoptimised, with on-target debugging support."
+    },
+    {
+      "name": "arm-build",
+      "hidden": true,
+      "inherits": "arm",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "description": "Flashable firmware, No debugging support and no release identity."
+    },
+    {
+      "name": "arm-release",
+      "hidden": true,
+      "inherits": "arm-build",
+      "cacheVariables": {},
+      "description": "Release firmware build."
     }
   ]
 }

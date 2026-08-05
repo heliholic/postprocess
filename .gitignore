@@ -17,6 +17,11 @@ CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 
+# Provisioned toolchain (see cmake/toolchain/arm-gnu-toolchain.lock.cmake)
+/tools/arm-gnu-toolchain-*/
+/tools/.cache/
+/tools/.staging-*/
+
 # Tooling
 compile_commands.json
 .cache/
