@@ -123,18 +123,22 @@ re-reconcile.
 
 ## Using it
 
-Link `chibios::rt` to reach the kernel:
+Link `chibios::rt`. `rfx::core` does so on board builds, so anything in
+`core/` includes the kernel directly:
 
 ```c
 #include <ch.h>
 ```
 
-Not yet linked by anything in this tree. The concurrency interface that will
-wrap it, keeping `ch.h` out of `helios/` and `targets/`, is a thin `PRIVATE`
-consumer of this target once `rfx::core` has sources of its own.
+That reach is wider than intended. Once `rfx::core` has sources of its own and
+becomes `STATIC`, make `chibios::rt` `PRIVATE` to it, leaving
+[src/core/rtos/](../../src/core/rtos/) as the only route and keeping `ch.h` out
+of `helios/` and `targets/`. `cmake/check_layering.cmake` scans first-party
+includes only and does not catch this.
 
 Board builds only. The vendored port is ARMv7-M, so a host build compiles
-nothing here.
+nothing here; the concurrency interface in `core/rtos/` must stay thin enough
+to carry a second implementation.
 
 Include paths are `SYSTEM`, as CMSIS's are: the firmware builds with
 `-Wconversion`, `-Wsign-conversion`, `-Wundef` and `-Wcast-qual`, which these

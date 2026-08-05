@@ -21,10 +21,12 @@
 
 #include "core/common/core.h"
 #include "core/board/board.h"
+#include "core/rtos/rtos.h"
 
 int main()
 {
     boardInit();
+    rtosStart();
 
-    FOREVER;
+    rtosPark();
 }

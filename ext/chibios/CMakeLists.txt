@@ -6,13 +6,13 @@
 # reaches nothing — so the kernel alone is a supported configuration.
 #
 # What the kernel requires from the hardware is listed in
-# ext/chibios/README.md: a SysTick driver, SVC from the port itself, and the
-# process stack from src/core/platform/startup/.
+# ext/chibios/README.md: SysTick from src/core/rtos/, SVC from the port itself,
+# and the process stack from src/core/platform/startup/.
 #
 # Vendored, not a submodule. See README.md for provenance and how to update.
 #
-# Board builds only. The ARMv7-M port is the only one vendored, so a host
-# build compiles nothing here.
+# Board builds only. The ARMv7-M port is the only one vendored, so a host build
+# compiles nothing here; core/ reaches the kernel through its own interface.
 
 add_library(chibios STATIC)
 add_library(chibios::rt ALIAS chibios)

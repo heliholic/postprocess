@@ -6,4 +6,5 @@
 add_subdirectory(board)
 add_subdirectory(common)
 add_subdirectory(platform)
+add_subdirectory(rtos)
 add_subdirectory(syscalls)

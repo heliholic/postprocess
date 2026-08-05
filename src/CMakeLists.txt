@@ -39,13 +39,17 @@ add_library(rfx_core INTERFACE)
 add_library(rfx::core ALIAS rfx_core)
 target_link_libraries(rfx_core INTERFACE rfx::common)
 
-# Hardware access belongs to core, so CMSIS attaches here and reaches the
-# layers above, whose board code needs the same register map. Board builds
-# only: the host has no register map.
+# Hardware access and scheduling belong to core, so CMSIS and the kernel attach
+# here and reach the layers above, including src/targets/, whose board code
+# needs the same register map. Board builds only: the host has no register map.
 #
-# Rides the INTERFACE link until core has sources of its own.
+# Both ride the INTERFACE link until core has sources of its own. Once core is
+# STATIC, make chibios::rt PRIVATE to it so ch.h stops being reachable from
+# helios/ and targets/ and core/rtos/ becomes the only route to the kernel.
+# cmake/check_layering.cmake scans first-party includes only and does not catch
+# this.
 if(RFX_TARGET)
-    target_link_libraries(rfx_core INTERFACE cmsis::device)
+    target_link_libraries(rfx_core INTERFACE cmsis::device chibios::rt)
 endif()
 
 add_library(rfx_helios INTERFACE)
