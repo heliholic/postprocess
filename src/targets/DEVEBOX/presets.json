@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "include": [
+    "../../../cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "devebox-debug",
+      "displayName": "DEVEBOX (debug)",
+      "inherits": "arm-debug",
+      "cacheVariables": {
+        "RFX_TARGET": "DEVEBOX"
+      }
+    },
+    {
+      "name": "devebox-build",
+      "displayName": "DEVEBOX (build)",
+      "inherits": "arm-build",
+      "cacheVariables": {
+        "RFX_TARGET": "DEVEBOX"
+      }
+    },
+    {
+      "name": "devebox-release",
+      "displayName": "DEVEBOX (release)",
+      "inherits": "arm-release",
+      "cacheVariables": {
+        "RFX_TARGET": "DEVEBOX"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "devebox-debug",
+      "configurePreset": "devebox-debug"
+    },
+    {
+      "name": "devebox-build",
+      "configurePreset": "devebox-build"
+    },
+    {
+      "name": "devebox-release",
+      "configurePreset": "devebox-release"
+    }
+  ]
+}
