@@ -1,0 +1,33 @@
+# Pinned ChibiOS.
+#
+# The single source of truth for which ChibiOS this firmware is built on.
+# tools/update-chibios.sh reads it and vendors exactly what it names;
+# ext/chibios/ is that script's output and is never edited by hand.
+#
+# To move to a new release:
+#   1. Edit the tag and commit below. Resolve a tag to its commit with:
+#        git ls-remote <repo> 'refs/tags/<tag>'
+#   2. Run tools/update-chibios.sh and review the diff. Vendored files are
+#      unmodified upstream copies, so anything else in the diff is an error.
+#   3. Diff config/chconf.h against the refreshed templates/chconf.h. Upstream
+#      adds and renames settings between releases, and an unset setting takes
+#      the new default.
+#   4. Build every board before committing.
+#
+# Rows are:  <component>  <repo>  <tag>  <commit>
+#
+# The tag is human-readable; the commit is the pin, since a tag can be moved
+# upstream and a commit cannot. The script fetches the tag and fails if it does
+# not resolve to the commit named here.
+#
+# There is one row: RT, the OS library, the ARMv7-M port and the Cortex
+# parameter headers come from one upstream. Which files are taken out of it is
+# the script's concern — see ext/chibios/README.md.
+
+chibios  https://github.com/ChibiOS/ChibiOS  ver21.11.5  f4bbadf964fc746aef8bbcf34135c7d8fabb8eae
+
+# Content hash of the vendored tree, maintained by tools/update-chibios.sh and
+# the only output line in this file. `--check` verifies it, so a vendored
+# source edited in place is detected. Do not edit.
+
+digest   e7e5a2453473ede669abc308b0af14342e7a3f596f00cfa72aa2338921b06514
