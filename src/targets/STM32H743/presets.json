@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "include": [
+    "../../../cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "stm32h743-debug",
+      "displayName": "STM32H743 (debug)",
+      "inherits": "arm-debug",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H743"
+      }
+    },
+    {
+      "name": "stm32h743-build",
+      "displayName": "STM32H743 (build)",
+      "inherits": "arm-build",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H743"
+      }
+    },
+    {
+      "name": "stm32h743-release",
+      "displayName": "STM32H743 (release)",
+      "inherits": "arm-release",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H743"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "stm32h743-debug",
+      "configurePreset": "stm32h743-debug"
+    },
+    {
+      "name": "stm32h743-build",
+      "configurePreset": "stm32h743-build"
+    },
+    {
+      "name": "stm32h743-release",
+      "configurePreset": "stm32h743-release"
+    }
+  ]
+}

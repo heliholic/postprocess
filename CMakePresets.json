@@ -6,7 +6,8 @@
     "patch": 0
   },
   "include": [
-    "cmake/presets/common.json"
+    "cmake/presets/common.json",
+    "src/targets/presets.json"
   ],
   "configurePresets": [
     {

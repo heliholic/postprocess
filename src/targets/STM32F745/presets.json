@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "include": [
+    "../../../cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "stm32f745-debug",
+      "displayName": "STM32F745 (debug)",
+      "inherits": "arm-debug",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32F745"
+      }
+    },
+    {
+      "name": "stm32f745-build",
+      "displayName": "STM32F745 (build)",
+      "inherits": "arm-build",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32F745"
+      }
+    },
+    {
+      "name": "stm32f745-release",
+      "displayName": "STM32F745 (release)",
+      "inherits": "arm-release",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32F745"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "stm32f745-debug",
+      "configurePreset": "stm32f745-debug"
+    },
+    {
+      "name": "stm32f745-build",
+      "configurePreset": "stm32f745-build"
+    },
+    {
+      "name": "stm32f745-release",
+      "configurePreset": "stm32f745-release"
+    }
+  ]
+}

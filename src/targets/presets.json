@@ -1,0 +1,9 @@
+{
+  "version": 6,
+  "include": [
+    "STM32F722/presets.json",
+    "STM32F745/presets.json",
+    "STM32H723/presets.json",
+    "STM32H743/presets.json"
+  ]
+}

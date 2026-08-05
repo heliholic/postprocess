@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 
 # Configure with e.g.:
+#   cmake --preset stm32h743-release
 #   cmake --preset host-test
 
 project(rfx-firmware
@@ -13,6 +14,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(RFXOptions)
 include(RFXWarnings)
+include(RFXFirmware)
 include(RFXLayering)
 
 set(CMAKE_C_STANDARD 11)
@@ -21,6 +23,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Board settings apply at this scope so they reach every subdirectory,
+# including ext/. Must precede the add_subdirectory() calls below.
+if(RFX_TARGET)
+    include(RFXBoard)
+endif()
 
 add_subdirectory(ext)
 add_subdirectory(src)
@@ -32,6 +40,8 @@ endif()
 
 message(STATUS "----------------------------------------------------------")
 message(STATUS "  ${PROJECT_NAME} ${PROJECT_VERSION}")
+message(STATUS "  target : ${RFX_TARGET}")
+message(STATUS "  mcu    : ${RFX_MCU}")
 message(STATUS "  build  : ${CMAKE_BUILD_TYPE}")
 message(STATUS "  tests  : ${RFX_BUILD_TESTS}")
 message(STATUS "----------------------------------------------------------")

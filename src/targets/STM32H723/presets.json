@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "include": [
+    "../../../cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "stm32h723-debug",
+      "displayName": "STM32H723 (debug)",
+      "inherits": "arm-debug",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H723"
+      }
+    },
+    {
+      "name": "stm32h723-build",
+      "displayName": "STM32H723 (build)",
+      "inherits": "arm-build",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H723"
+      }
+    },
+    {
+      "name": "stm32h723-release",
+      "displayName": "STM32H723 (release)",
+      "inherits": "arm-release",
+      "cacheVariables": {
+        "RFX_TARGET": "STM32H723"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "stm32h723-debug",
+      "configurePreset": "stm32h723-debug"
+    },
+    {
+      "name": "stm32h723-build",
+      "configurePreset": "stm32h723-build"
+    },
+    {
+      "name": "stm32h723-release",
+      "configurePreset": "stm32h723-release"
+    }
+  ]
+}
