@@ -2,6 +2,7 @@
   "version": 6,
   "include": [
     "DEVEBOX/presets.json",
+    "NEXUS/presets.json",
     "STM32F722/presets.json",
     "STM32F745/presets.json",
     "STM32H723/presets.json",

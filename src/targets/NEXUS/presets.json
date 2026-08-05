@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "include": [
+    "../../../cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "nexus-debug",
+      "displayName": "NEXUS (debug)",
+      "inherits": "arm-debug",
+      "cacheVariables": {
+        "RFX_TARGET": "NEXUS"
+      }
+    },
+    {
+      "name": "nexus-build",
+      "displayName": "NEXUS (build)",
+      "inherits": "arm-build",
+      "cacheVariables": {
+        "RFX_TARGET": "NEXUS"
+      }
+    },
+    {
+      "name": "nexus-release",
+      "displayName": "NEXUS (release)",
+      "inherits": "arm-release",
+      "cacheVariables": {
+        "RFX_TARGET": "NEXUS"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "nexus-debug",
+      "configurePreset": "nexus-debug"
+    },
+    {
+      "name": "nexus-build",
+      "configurePreset": "nexus-build"
+    },
+    {
+      "name": "nexus-release",
+      "configurePreset": "nexus-release"
+    }
+  ]
+}
