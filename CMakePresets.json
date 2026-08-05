@@ -1,0 +1,53 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "include": [
+    "cmake/presets/common.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "host",
+      "displayName": "Host build (no hardware)",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "description": "Host build: no board, no firmware image"
+    },
+    {
+      "name": "host-test",
+      "displayName": "Host unit tests",
+      "inherits": "host",
+      "cacheVariables": {
+        "RFX_BUILD_TESTS": "ON",
+        "RFX_WERROR": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "host",
+      "configurePreset": "host"
+    },
+    {
+      "name": "host-test",
+      "configurePreset": "host-test"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "host-test",
+      "configurePreset": "host-test",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error"
+      }
+    }
+  ]
+}
